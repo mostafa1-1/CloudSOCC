@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}CloudSOC — Dashboard{% endblock %}
+{% block content %}
+<h1 class="h4 mb-4">Security Operations Overview</h1>
+<div class="row g-3">
+  <div class="col-md-6"><canvas id="eventsChart"></canvas></div>
+  <div class="col-md-6"><canvas id="alertsChart"></canvas></div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  body { margin: 0; padding: 32px; background: #ffffff; font-family: Arial, sans-serif; color: #0f172a; }
+  .frame { width: 1320px; border: 2px solid #1e293b; border-radius: 10px; padding: 28px; background: #f8fafc; }
+  h1 { margin: 0 0 6px; font-size: 24px; color: #0f172a; }
+  p.sub { margin: 0 0 22px; font-size: 13px; color: #475569; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: stretch; }
+  .box { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 14px; }
+  .box.dark { background: #0f172a; color: #f8fafc; border-color: #1e293b; }
+  .box.blue { border-color: #2563eb; background: #eff6ff; }
+  .box h2 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.4px; color: #1d4ed8; }
+  .box.dark h2 { color: #38bdf8; }
+  ul { margin: 0; padding-left: 16px; font-size: 12px; line-height: 1.55; }
+  .arrow-row { text-align: center; font-size: 13px; font-weight: bold; color: #1d4ed8; margin: 12px 0; }
+  .cloud-band { margin-top: 18px; border: 1.5px dashed #0284c7; border-radius: 8px; padding: 14px 18px; background: #f0f9ff; }
+  .cloud-band h3 { margin: 0 0 8px; font-size: 13px; color: #0369a1; text-transform: uppercase; }
+  .cloud-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; font-size: 12px; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <h1>CloudSOC — Modular System &amp; Cloud Deployment Architecture</h1>
+    <p class="sub">Team: [TEAM NAME] ([TEAM ID]) · Academic Year 2026 · Actual Implemented Components</p>
+    <div class="grid">
+      <div class="box dark">
+        <h2>1. Presentation Tier</h2>
+        <ul>
+          <li>Authenticated SOC Analysts &amp; Admins</li>
+          <li>Responsive Dark-Navy Web Console</li>
+          <li>12 Views (Login, Dashboard, Events, Threat Intel, Alerts, Incidents, Reports, Admin)</li>
+          <li>Chart.js 5-Chart Telemetry Visualizations</li>
+        </ul>
+      </div>
+      <div class="box blue">
+        <h2>2. Application &amp; Security Tier</h2>
+        <ul>
+          <li>HTTPS / TLS Reverse Proxy + Security Headers (CSP, XFO, nosniff)</li>
+          <li>REST API Layer (Express / Flask Blueprints)</li>
+          <li>bcrypt Password Hashing &amp; HttpOnly Session Cookies</li>
+          <li>CSRF Token Validation &amp; RBAC Enforcement</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>3. Detection &amp; Response Core</h2>
+        <ul>
+          <li>Event Collection &amp; Redaction Pipeline</li>
+          <li>Rule-Based Detection Engine (RULE-001 to RULE-005)</li>
+          <li>Sliding Window Deduplication &amp; IP Allowlist</li>
+          <li>Incident Lifecycle Manager &amp; CSV/PDF Report Generator</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>4. Data &amp; Intelligence Tier</h2>
+        <ul>
+          <li>Normalized 11-Table Relational Database (SQLite Runtime / PostgreSQL Cloud Schema)</li>
+          <li>Threat Intel Proxy (VirusTotal / AbuseIPDB + Local Demo Mode)</li>
+          <li>Cached Threat Indicators &amp; Immutable Audit Logs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="arrow-row">User Request (HTTPS) ──▶ Web Frontend ──▶ REST API + RBAC/CSRF ──▶ Event Ingestion &amp; Rule Engine ──▶ Alert / Incident Persistence ──▶ Reports &amp; Analytics</div>
+    <div class="cloud-band">
+      <h3>Cloud Deployment &amp; Infrastructure Mapping (Google Cloud Target / Containerized Runtime)</h3>
+      <div class="cloud-cols">
+        <div><strong>Compute Hosting:</strong> Cloud Run Stateless Container (Gunicorn / Node.js, Auto-scaling 0–3 instances, Managed HTTPS)</div>
+        <div><strong>Cloud Persistence:</strong> Managed PostgreSQL (Cloud SQL / Free-Tier Neon/Render) with Foreign Keys &amp; Daily Snapshot Strategy</div>
+        <div><strong>Security &amp; Observability:</strong> Secret Manager for API/Session Keys, Structured Request Logging, Health Probes (/api/health)</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

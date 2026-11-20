@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  body { margin: 0; padding: 28px; background: #ffffff; font-family: Arial, sans-serif; color: #0f172a; }
+  .frame { width: 1200px; border: 2px solid #1e293b; border-radius: 10px; padding: 24px; background: #f8fafc; }
+  h1 { margin: 0 0 6px; font-size: 20px; }
+  p.sub { margin: 0 0 18px; font-size: 12px; color: #475569; }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .step { background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 12px; }
+  .step .num { display: inline-block; background: #1d4ed8; color: #fff; font-weight: bold; padding: 2px 7px; border-radius: 4px; font-size: 11px; margin-bottom: 6px; }
+  .step h3 { margin: 0 0 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <h1>CloudSOC — Authentication, CSRF &amp; RBAC Security Flow</h1>
+    <p class="sub">Server-side credential verification, brute-force telemetry logging, HttpOnly cookies, and role enforcement</p>
+    <div class="steps">
+      <div class="step"><span class="num">STEP 1</span><h3>Credential Submit</h3><p>User submits email/username &amp; password over HTTPS POST /api/auth/login.</p></div>
+      <div class="step"><span class="num">STEP 2</span><h3>Lockout &amp; bcrypt</h3><p>Server checks active status &amp; lockout timestamp, then compares bcrypt hash (cost 10).</p></div>
+      <div class="step"><span class="num">STEP 3</span><h3>Event &amp; Detection</h3><p>Failed or successful login writes to security_events (password redacted) and triggers RULE-001/002.</p></div>
+      <div class="step"><span class="num">STEP 4</span><h3>Session &amp; CSRF</h3><p>On success, SHA-256 hashed token stored in DB; HttpOnly + SameSite=Lax cookie + CSRF token issued.</p></div>
+      <div class="step"><span class="num">STEP 5</span><h3>RBAC Guard</h3><p>Protected routes verify session + X-CSRF-Token; Admin routes reject SECURITY_ANALYST with HTTP 403.</p></div>
+    </div>
+  </div>
+</body>
+</html>

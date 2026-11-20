@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: cloudsoc-web
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT run:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cloudsoc-db
+          property: connectionString
+
+databases:
+  - name: cloudsoc-db
+    plan: free
+    databaseName: cloudsoc
+    user: cloudsoc_user
